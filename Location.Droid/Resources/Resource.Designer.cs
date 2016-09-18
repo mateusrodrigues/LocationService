@@ -60,26 +60,29 @@ namespace Location.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050005
-			public const int acc = 2131034117;
-			
-			// aapt resource value: 0x7f050003
-			public const int alt = 2131034115;
-			
 			// aapt resource value: 0x7f050006
-			public const int bear = 2131034118;
-			
-			// aapt resource value: 0x7f050001
-			public const int lat = 2131034113;
-			
-			// aapt resource value: 0x7f050002
-			public const int longx = 2131034114;
+			public const int acc = 2131034118;
 			
 			// aapt resource value: 0x7f050004
-			public const int speed = 2131034116;
+			public const int alt = 2131034116;
+			
+			// aapt resource value: 0x7f050007
+			public const int bear = 2131034119;
 			
 			// aapt resource value: 0x7f050000
-			public const int textView1 = 2131034112;
+			public const int btnOpenMaps = 2131034112;
+			
+			// aapt resource value: 0x7f050002
+			public const int lat = 2131034114;
+			
+			// aapt resource value: 0x7f050003
+			public const int longx = 2131034115;
+			
+			// aapt resource value: 0x7f050005
+			public const int speed = 2131034117;
+			
+			// aapt resource value: 0x7f050001
+			public const int status = 2131034113;
 			
 			static Id()
 			{
@@ -115,6 +118,9 @@ namespace Location.Droid
 			
 			// aapt resource value: 0x7f040000
 			public const int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040002
+			public const int OpenMaps = 2130968578;
 			
 			static String()
 			{

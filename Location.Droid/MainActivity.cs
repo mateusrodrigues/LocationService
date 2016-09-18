@@ -17,12 +17,19 @@ namespace Location.Droid
         readonly string logTag = "MainActivity";
 
         // Make our labels
+        TextView status;
         TextView latText;
         TextView longText;
         TextView altText;
         TextView speedText;
         TextView bearText;
         TextView accText;
+
+        // Program intent button
+        Button mapsButton;
+
+        // Location information
+        double latitude, longitude;
 
         #region Lifecycle
 
@@ -49,6 +56,17 @@ namespace Location.Droid
                 App.Current.LocationService.StatusChanged += HandleStatusChanged;
             };
 
+            // 'Open in Maps' button on view
+            mapsButton = FindViewById<Button>(Resource.Id.btnOpenMaps);
+            // Create intent when button is clicked
+            mapsButton.Click += delegate
+            {
+                var streetViewUri = Android.Net.Uri.Parse($"google.streetview:cbll={latitude},{longitude}&cbp=1,90,,0,1.0&mz=20");
+                var streetViewIntent = new Intent(Intent.ActionView, streetViewUri);
+                StartActivity(streetViewIntent);
+            };
+
+            status = FindViewById<TextView>(Resource.Id.status);
             latText = FindViewById<TextView>(Resource.Id.lat);
             longText = FindViewById<TextView>(Resource.Id.longx);
             altText = FindViewById<TextView>(Resource.Id.alt);
@@ -98,11 +116,20 @@ namespace Location.Droid
             // These events are on a background thread, need to update on the UI thread
             RunOnUiThread(() =>
             {
+                mapsButton.Enabled = true;
+
+                status.Visibility = ViewStates.Gone;
+
                 latText.Text = String.Format("Latitude: {0}", location.Latitude);
+                latitude = location.Latitude;
+
                 longText.Text = String.Format("Longitude: {0}", location.Longitude);
+                longitude = location.Longitude;
+
                 altText.Text = String.Format("Altitude: {0}", location.Altitude);
                 speedText.Text = String.Format("Speed: {0}", location.Speed);
                 accText.Text = String.Format("Accuracy: {0}", location.Accuracy);
+
                 bearText.Text = String.Format("Bearing: {0}", location.Bearing);
             });
         }
