@@ -3,4 +3,5 @@
     <string name="Hello">Hello World, Click Me!</string>
     <string name="ApplicationName">Location.Droid</string>
     <string name="OpenMaps">Open in Maps</string>
+    <string name="GoToMap">Go to Map</string>
 </resources>

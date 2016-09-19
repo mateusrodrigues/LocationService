@@ -8,6 +8,7 @@ using Android.OS;
 using Android.Util;
 using Location.Droid.Services;
 using Android.Locations;
+using Android.Gms.Maps;
 
 namespace Location.Droid
 {
@@ -27,6 +28,7 @@ namespace Location.Droid
 
         // Program intent button
         Button mapsButton;
+        Button goToMapButton;
 
         // Location information
         double latitude, longitude;
@@ -58,6 +60,7 @@ namespace Location.Droid
 
             // 'Open in Maps' button on view
             mapsButton = FindViewById<Button>(Resource.Id.btnOpenMaps);
+            goToMapButton = FindViewById<Button>(Resource.Id.goToMapButton);
             // Create intent when button is clicked
             mapsButton.Click += delegate
             {
@@ -66,6 +69,12 @@ namespace Location.Droid
                 StartActivity(streetViewIntent);
             };
 
+            goToMapButton.Click += delegate
+            {
+                StartActivity(typeof(LocationMapActivity));
+            };
+
+            // Instantiate the TextViews
             status = FindViewById<TextView>(Resource.Id.status);
             latText = FindViewById<TextView>(Resource.Id.lat);
             longText = FindViewById<TextView>(Resource.Id.longx);
